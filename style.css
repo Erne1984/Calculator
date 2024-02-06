@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {}
+
+.calculator-box {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.calculator-box .row {
+    display: flex;
+}
+
+.calculator-box .row .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    flex-grow: 1;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.calculator-box .row .btn .btn-0 {
+    flex-grow: 2;
+}
