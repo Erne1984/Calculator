@@ -128,11 +128,11 @@ btnDot.addEventListener("click", () => {
 })
 btnNegative.addEventListener("click", () => {
     if (!operator.textContent) {
-        if(value1Display.textContent == ""){ return ""};
+        if (value1Display.textContent == "") { return "" };
         let currentValue = value1Display.textContent == "0" ? "" : value1Display.textContent;
         value1Display.textContent = "-" + currentValue;
     } else {
-        if(value2Display.textContent == ""){ return ""};
+        if (value2Display.textContent == "") { return "" };
         let currentValue = value2Display.textContent == "0" ? "" : value2Display.textContent;
         value2Display.textContent = "-" + currentValue;
     }
