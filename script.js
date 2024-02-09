@@ -2,6 +2,7 @@ const btnAc = document.querySelector("#btn-AC");
 const btnDelete = document.querySelector("#btn-delete");
 const btnDot = document.querySelector("#btn-dot");
 const btnEqual = document.querySelector("#btn-equal");
+const btnNegative = document.querySelector("#btn-negative");
 
 const value1Display = document.querySelector("#value1");
 const value2Display = document.querySelector("#value2");
@@ -27,11 +28,29 @@ function multiply(a, b) {
 
 function divide(a, b) {
     clearAll()
+    if (b === 0) {
+        alert("NÃO É POSSÍVEL DIVDIR POR ZERO!");
+        return 0;
+    }
     return a / b;
 }
 
-function percentage() {
-    
+function calcule() {
+
+    if (value1Display.textContent == "" || value2Display.textContent == "" || operator.textContent == "") {
+        return alert("nada para ser calculado");
+    }
+
+    const operationFunction = operatorFunctions[operator.textContent];
+
+    if (operationFunction) {
+        value1Display.textContent = operationFunction(
+            parseFloat(value1Display.textContent),
+            parseFloat(value2Display.textContent)
+        );
+    } else {
+        return alert("Operador inválido");
+    }
 }
 
 function clearAll() {
@@ -83,25 +102,38 @@ Array.from(btnOperators).map((btnOperator) => {
             return alert("insira um valor primeiro");
         }
 
+        if (operator.textContent) {
+            calcule()
+        }
+
         operator.textContent += operatorClicked;
     })
 })
 
+
 btnAc.addEventListener("click", clearAll)
-btnEqual.addEventListener("click", () => {
-    if (value1Display.textContent == "" || value2Display.textContent == "" || operator.textContent == "") {
-        return alert("nada para ser calculado");
+btnEqual.addEventListener("click", calcule)
+btnDelete.addEventListener("click", erase)
+btnDot.addEventListener("click", () => {
+    if (!value1Display.textContent) {
+        return "";
     }
-
-    const operationFunction = operatorFunctions[operator.textContent];
-
-    if (operationFunction) {
-        value1Display.textContent = operationFunction(
-            parseFloat(value1Display.textContent),
-            parseFloat(value2Display.textContent)
-        );
+    if (value1Display.textContent && value2Display.textContent) {
+        value2Display.textContent += ".";
+    } else if (value1Display.textContent && operator.textContent) {
+        return "";
     } else {
-        return alert("Operador inválido");
+        value1Display.textContent += ".";
     }
 })
-btnDelete.addEventListener("click", erase)
+btnNegative.addEventListener("click", () => {
+    if (!operator.textContent) {
+        if(value1Display.textContent == ""){ return ""};
+        let currentValue = value1Display.textContent == "0" ? "" : value1Display.textContent;
+        value1Display.textContent = "-" + currentValue;
+    } else {
+        if(value2Display.textContent == ""){ return ""};
+        let currentValue = value2Display.textContent == "0" ? "" : value2Display.textContent;
+        value2Display.textContent = "-" + currentValue;
+    }
+})
