@@ -64,11 +64,11 @@
     color: #99d0f5;
 }
 
-.calculator-box .row .operator{
+.calculator-box .row .operator {
     color: #e57373;
 }
 
-.calculator-box .row #equal{
+.calculator-box .row #equal {
 
     background-color: #e57273;
 }
@@ -88,9 +88,6 @@
 /* FOOTER */
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,14 +96,14 @@
     padding: 10px;
     font-size: 20px;
     color: white;
-  }
-  
-  .fa-github {
+}
+
+.fa-github {
     color: white;
     font-size: 28px;
     transition: transform 0.3s ease-in-out;
-  }
-  
-  .fa-github:hover {
+}
+
+.fa-github:hover {
     transform: rotate(360deg) scale(1.2);
-  }
+}
